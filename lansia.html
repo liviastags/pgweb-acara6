@@ -42,7 +42,7 @@
       <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h4> Jumlah Penduduk Laki-Laki dan Perempuan</h4>
+                <h4> Jumlah Penduduk Lansia</h4>
             </div>
             <div class="card-body">
                 <div id="chart">
@@ -76,37 +76,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.42.0/apexcharts.min.js" integrity="sha512-HctQcT5hnI/elQck4950pvd50RuDnjCSGSoHI8CNyQIYVxsUoyJ+gSQIOrll4oM/Z7Kfi7WCLMIbJbiwYHFCpA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         
-      
         var options = {
-          series: [{
-          name: 'Jumlah Penduduk Laki-Laki',
-          data: [110492, 54501, 101358, 54785, 127171, 114726]
-        },
-        {
-          name: 'Jumlah Penduduk Perempuan',
-          data: [106009, 53711, 98842, 54546, 125262, 112615]
-        }],
-          chart: {
-          type: 'bar',
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded',
-            dataLabels: {
-                position: 'top',
-            },
+          series: [
+          {
+            name: "Laki-Laki",
+            data: [9879, 5311, 8545, 6076, 11766, 9979]
           },
+          {
+            name: "Perempuan",
+            data: [10348, 5898, 8930, 7334, 13111, 10653]
+          }
+        ],
+          chart: {
+          height: 500,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 25,
+            left: 7,
+            blur: 10,
+            opacity: 0.1
+          },
+          toolbar: {
+            show: false
+          }
         },
+        colors: ['#66CCFF', '#FF9999'],
         dataLabels: {
-          enabled: false
+          enabled: true,
         },
         stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
+          curve: 'straight'
+        },
+        title: {
+          text: 'Jumlah Penduduk Lansia Laki-Laki dan Perempuan',
+          align: 'left'
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
         },
         xaxis: {
           categories: ['Bogor Selatan', 'Bogor Timur', 'Bogor Utara', 'Bogor Tengah', 'Bogor Barat', 'Tanah Sareal'],
@@ -117,33 +132,24 @@
         yaxis: {
           title: {
             text: 'Jiwa'
-          }
-        },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return val + " Jiwa"
-            }
-          }
-        }, 
-        dataLabels: {
-          enabled: true,
-          formatter: function (val) {
-            return val;
           },
-          offsetY: -20,
-          style: {
-            fontSize: '12px',
-            colors: ["#304758"]
-          }
+          min: 5200,
+          max: 13200
         },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          floating: true,
+          offsetY: -10,
+          offsetX: -5
+        }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
+      
+      
+    
 
     </script>
   </body>
